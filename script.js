@@ -14,11 +14,11 @@ const quotes = [
 // Get DOM elements
 const quoteElement = document.getElementById("quote");
 const generateButton = document.getElementById("generate-button");
-const shareButton = document.getElementById("share-button");
-const saveButton = document.getElementById("save-button");
+const likeButton = document.getElementById("like-button");
+const copyButton = document.getElementById("copy-button");
 
-// Array to store favorite quotes
-let favorites = [];
+// Array to store liked quotes
+let likedQuotes = [];
 
 // Generate a random quote
 function generateQuote() {
@@ -27,24 +27,29 @@ function generateQuote() {
   quoteElement.textContent = randomQuote;
 }
 
-// Function to share quote on social media
-function shareQuote() {
+// Function to like a quote
+function likeQuote() {
   const quote = quoteElement.textContent;
-  const shareUrl = `https://example.com/share?quote=${encodeURIComponent(quote)}`;
-  // Replace "example.com" with the actual domain of your website
-
-  // Open social media share dialog
-  window.open(shareUrl, "_blank");
+  if (!likedQuotes.includes(quote)) {
+    likedQuotes.push(quote);
+    likeButton.textContent = "Liked!";
+    likeButton.disabled = true;
+  }
 }
 
-// Function to save quote as favorite
-function saveQuote() {
-  const quote = quoteElement.textContent;
-  favorites.push(quote);
-  // You can choose to store favorites in local storage or send them to the server for persistence
+// Function to copy URL to the page
+function copyURL() {
+  const url = window.location.href;
+  navigator.clipboard.writeText(url).then(() => {
+    copyButton.textContent = "Copied!";
+    setTimeout(() => {
+      copyButton.textContent = "Copy URL";
+    }, 2000);
+  });
 }
 
 // Event listeners
 generateButton.addEventListener("click", generateQuote);
-shareButton.addEventListener("click", shareQuote);
-saveButton.addEventListener("click", saveQuote);
+likeButton.addEventListener("click", likeQuote);
+copyButton.addEventListener("click", copyURL);
+
