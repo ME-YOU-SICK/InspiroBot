@@ -6,102 +6,45 @@ body {
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+  text-align: center;
+  margin: 50px auto;
 }
 
-h1 {
-    color: #333;
-    font-size: 36px;
-    margin-bottom: 20px;
+.heading {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 28px;
+  margin-bottom: 20px;
 }
 
 .quote-container {
-    text-align: center;
-    margin-top: 50px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
-#quote {
-    font-size: 24px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-    color: #555;
-}
-
-#generate-btn {
-    padding: 12px 24px;
-    font-size: 18px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#generate-btn:hover {
-    background-color: #0056b3;
-}
-
-/* Animation */
-@keyframes fade-in {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-/* Hover Effect */
-button:hover {
-  background-color: #ffcc00;
-  color: #fff;
-}
-
-/* Custom Fonts */
 .quote {
   font-family: 'Open Sans', sans-serif;
   font-size: 24px;
   line-height: 1.5;
 }
 
-/* Background Effects */
-body {
-  background: linear-gradient(to bottom, #f9f9f9, #fff);
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
-/* Transitions */
-.quote {
-  transition: opacity 0.3s ease-in-out;
-}
-
-/* Box Shadows and Borders */
-button {
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-/* Color Schemes */
-body {
-  color: #333;
-  background-color: #fff;
-}
-
-button {
+.button {
   background-color: #ffcc00;
   color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .quote {
-    font-size: 20px;
-  }
+.button:hover {
+  background-color: #ff9933;
 }
 
-/* Responsive Images */
-img {
-  max-width: 100%;
-  height: auto;
-}
