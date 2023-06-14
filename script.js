@@ -383,41 +383,12 @@ const quotes = [
   "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
 ];
 
+
 // Generate random quote
 function generateQuote() {
-  const quote = quotes[Math.floor(Math.random() * quotes.length)];
-  document.getElementById("quote").textContent = quote;
+    const quote = quotes[Math.floor(Math.random() * quotes.length)];
+    document.getElementById("quote").textContent = quote;
 }
 
-// Generate new quote using AI
-async function generateNewQuote() {
-  const response = await fetch("https://api.openai.com/v1/engines/davinci-codex/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer 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",
-    },
-    body: JSON.stringify({
-      prompt: "Generate an inspirational quote:",
-      max_tokens: 50,
-      temperature: 0.7,
-      top_p: 1.0,
-      frequency_penalty: 0.0,
-      presence_penalty: 0.0,
-    }),
-  });
-
-  const data = await response.json();
-
-  if (data.choices && data.choices.length > 0) {
-    const newQuote = data.choices[0].text.trim();
-    quotes.push(newQuote);
-    console.log("New quote generated:", newQuote);
-  }
-}
-
-// Add click event listener to the buttons
-document.getElementById("generate-btn").addEventListener("click", function() {
-  generateQuote();
-  generateNewQuotes();
-});
+// Add click event listener to the button
+document.getElementById("generate-btn").addEventListener("click", generateQuote);
