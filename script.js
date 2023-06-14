@@ -1,26 +1,32 @@
-// Create an array to store the quotes
-let quotes = [];
-
-// Function to fetch quotes from a text file
-async function fetchQuotes() {
-  try {
-    const response = await fetch('quotes.txt');
-    const data = await response.text();
-    quotes = data.split('\n');
-  } catch (error) {
-    console.log('Error fetching quotes:', error);
-  }
+// Generate random quote
+function generateQuote() {
+  // Fetch quote from ChatGPT or any other API
+  fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer YOUR_OPENAI_API_KEY'
+    },
+    body: JSON.stringify({
+      prompt: "Generate an inspirational quote:",
+      max_tokens: 50,
+      temperature: 0.7,
+      top_p: 1.0,
+      frequency_penalty: 0.0,
+      presence_penalty: 0.0
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.choices && data.choices.length > 0) {
+      const quote = data.choices[0].text.trim();
+      document.getElementById("quote").textContent = quote;
+    }
+  })
+  .catch(error => {
+    console.log("An error occurred while fetching the quote:", error);
+  });
 }
 
-// Function to generate a random quote
-function generateRandomQuote() {
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  return quotes[randomIndex];
-}
-
-// Fetch quotes on page load
-window.addEventListener('DOMContentLoaded', fetchQuotes);
-
-// Example usage: generate and display a random quote
-const randomQuote = generateRandomQuote();
-console.log(randomQuote);
+// Add click event listener to the button
+document.getElementById("generate-btn").addEventListener("click", generateQuote);
