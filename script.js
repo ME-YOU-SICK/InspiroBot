@@ -1,53 +1,21 @@
-// Get DOM elements
-const quoteElement = document.getElementById("quote");
-const generateButton = document.getElementById("generate-button");
-const likeButton = document.getElementById("like-button");
-const copyButton = document.getElementById("copy-button");
-
-// Array to store liked quotes
-let likedQuotes = [];
-
-// Array of sample quotes (replace with your own quotes)
+// Array of quotes
 const quotes = [
-  "Quote 1",
-  "Quote 2",
-  "Quote 3",
-  "Quote 4",
-  "Quote 5"
+    "The only way to do great work is to love what you do. - Steve Jobs",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
+    "Believe you can and you're halfway there. - Theodore Roosevelt",
+    "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+    "In the middle of difficulty lies opportunity. - Albert Einstein",
+    "Your time is limited, don't waste it living someone else's life. - Steve Jobs",
+    "Strive not to be a success, but rather to be of value. - Albert Einstein",
+    "The best way to predict the future is to create it. - Peter Drucker",
+    "Don't watch the clock; do what it does. Keep going. - Sam Levenson"
 ];
 
-// Generate a random quote
+// Generate random quote
 function generateQuote() {
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  const randomQuote = quotes[randomIndex];
-  quoteElement.textContent = randomQuote;
+    const quote = quotes[Math.floor(Math.random() * quotes.length)];
+    document.getElementById("quote").textContent = quote;
 }
 
-// Function to like a quote
-function likeQuote() {
-  const quote = quoteElement.textContent;
-  if (!likedQuotes.includes(quote)) {
-    likedQuotes.push(quote);
-    likeButton.textContent = "Liked!";
-    likeButton.disabled = true;
-  }
-}
-
-// Function to copy URL to the page
-function copyURL() {
-  const url = window.location.href;
-  navigator.clipboard.writeText(url).then(() => {
-    copyButton.textContent = "Copied!";
-    setTimeout(() => {
-      copyButton.textContent = "Copy URL";
-    }, 2000);
-  });
-}
-
-// Event listeners
-generateButton.addEventListener("click", generateQuote);
-likeButton.addEventListener("click", likeQuote);
-copyButton.addEventListener("click", copyURL);
-
-// Initial quote generation
-generateQuote();
+// Add click event listener to the button
+document.getElementById("generate-btn").addEventListener("click", generateQuote);
