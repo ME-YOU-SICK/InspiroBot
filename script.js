@@ -11,11 +11,40 @@ const quotes = [
     "Don't watch the clock; do what it does. Keep going. - Sam Levenson"
 ];
 
-// Generate random quote
+// Get DOM elements
+const quoteElement = document.getElementById("quote");
+const generateButton = document.getElementById("generate-button");
+const shareButton = document.getElementById("share-button");
+const saveButton = document.getElementById("save-button");
+
+// Array to store favorite quotes
+let favorites = [];
+
+// Generate a random quote
 function generateQuote() {
-    const quote = quotes[Math.floor(Math.random() * quotes.length)];
-    document.getElementById("quote").textContent = quote;
+  // Generate quote logic here
+  const randomQuote = getRandomQuote();
+  quoteElement.textContent = randomQuote;
 }
 
-// Add click event listener to the button
-document.getElementById("generate-btn").addEventListener("click", generateQuote);
+// Function to share quote on social media
+function shareQuote() {
+  const quote = quoteElement.textContent;
+  const shareUrl = `https://example.com/share?quote=${encodeURIComponent(quote)}`;
+  // Replace "example.com" with the actual domain of your website
+
+  // Open social media share dialog
+  window.open(shareUrl, "_blank");
+}
+
+// Function to save quote as favorite
+function saveQuote() {
+  const quote = quoteElement.textContent;
+  favorites.push(quote);
+  // You can choose to store favorites in local storage or send them to the server for persistence
+}
+
+// Event listeners
+generateButton.addEventListener("click", generateQuote);
+shareButton.addEventListener("click", shareQuote);
+saveButton.addEventListener("click", saveQuote);
