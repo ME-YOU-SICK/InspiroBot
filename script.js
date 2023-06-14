@@ -4,7 +4,7 @@ let quotes = [];
 // Function to fetch quotes from a text file
 async function fetchQuotes() {
   try {
-    const response = await fetch('path/to/quotes.txt');
+    const response = await fetch('quotes.txt');
     const data = await response.text();
     quotes = data.split('\n');
   } catch (error) {
