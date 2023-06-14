@@ -17,8 +17,8 @@ function generateQuote() {
   document.getElementById("quote").textContent = quote;
 }
 
-// Generate new quotes using AI
-async function generateNewQuotes() {
+// Generate new quote using AI
+async function generateNewQuote() {
   const response = await fetch("https://api.openai.com/v1/engines/davinci-codex/completions", {
     method: "POST",
     headers: {
