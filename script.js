@@ -45,5 +45,7 @@ async function generateNewQuotes() {
 }
 
 // Add click event listener to the buttons
-document.getElementById("generate-btn").addEventListener("click", generateQuote);
-document.getElementById("generate-new-btn").addEventListener("click", generateNewQuotes);
+document.getElementById("generate-btn").addEventListener("click", function() {
+  generateQuote();
+  generateNewQuotes();
+});
