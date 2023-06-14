@@ -11,23 +11,11 @@ const quotes = [
     "Don't watch the clock; do what it does. Keep going. - Sam Levenson"
 ];
 
-// Function to generate a random quote
-function generateRandomQuote() {
-  // Get a random index from the quotes array
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-
-  // Get the quote object at the random index
-  const quote = quotes[randomIndex];
-
-  // Display the quote text
-  document.getElementById("quote-text").textContent = quote.text;
-
-  // Display the quote author
-  document.getElementById("quote-author").textContent = "- " + quote.author;
+// Generate random quote
+function generateQuote() {
+    const quote = quotes[Math.floor(Math.random() * quotes.length)];
+    document.getElementById("quote").textContent = quote;
 }
 
-// Event listener for the refresh button
-document.getElementById("refresh-btn").addEventListener("click", generateRandomQuote);
-
-// Generate a random quote when the page loads
-generateRandomQuote();
+// Add click event listener to the button
+document.getElementById("generate-btn").addEventListener("click", generateQuote);
