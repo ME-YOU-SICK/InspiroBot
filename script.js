@@ -5,7 +5,7 @@ function generateQuote() {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer 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'
+      'Authorization': 'Bearer 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'
     },
     body: JSON.stringify({
       prompt: "Generate an inspirational quote:",
