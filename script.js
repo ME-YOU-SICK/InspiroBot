@@ -5,7 +5,7 @@ function generateQuote() {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer YOUR_OPENAI_API_KEY'
+      'Authorization': 'Bearer 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'
     },
     body: JSON.stringify({
       prompt: "Generate an inspirational quote:",
