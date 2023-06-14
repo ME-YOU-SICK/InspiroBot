@@ -1,9 +1,21 @@
 // Array of quotes
-let quotes = [
+const quotes = [
     "The only way to do great work is to love what you do. - Steve Jobs",
     "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
     "Believe you can and you're halfway there. - Theodore Roosevelt",
+    "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+    "In the middle of difficulty lies opportunity. - Albert Einstein",
+    "Your time is limited, don't waste it living someone else's life. - Steve Jobs",
+    "Strive not to be a success, but rather to be of value. - Albert Einstein",
+    "The best way to predict the future is to create it. - Peter Drucker",
+    "Don't watch the clock; do what it does. Keep going. - Sam Levenson"
 ];
+
+// Generate random quote
+function generateQuote() {
+    const quote = quotes[Math.floor(Math.random() * quotes.length)];
+    document.getElementById("quote").textContent = quote;
+}
 
 // Generate new quotes using AI
 async function generateNewQuotes() {
@@ -11,10 +23,10 @@ async function generateNewQuotes() {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer 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'
+            'Authorization': 'Bearer YOUR_OPENAI_API_KEY'
         },
         body: JSON.stringify({
-            prompt: "Generate a short quote that is inspirational:",
+            prompt: "Generate a new quote:",
             max_tokens: 50,
             temperature: 0.7,
             top_p: 1.0,
